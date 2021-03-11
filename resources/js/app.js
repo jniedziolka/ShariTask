@@ -1,7 +1,7 @@
 require('./bootstrap');
 
 // Import modules...
-import { App, plugin} from '@inertiajs/inertia-vue';
+import { App, plugin } from '@inertiajs/inertia-vue';
 import Vue from 'vue';
 
 Vue.use(plugin);
