@@ -1,16 +1,17 @@
 <template>
-    <div>
-        Here comes the dashboard of {{ user.nickname }}.
-        <inertia-link type="button" href="/logout" method="post" class="p-4 bg-gray-200">Logout</inertia-link>
-    </div>
+    <app-layout>
+        <task-list />
+    </app-layout>
 </template>
 
 <script>
+    import AppLayout from '@/Layouts/AppLayout'
+    import TaskList from "@/Components/Tasks/TaskList";
+
     export default {
-        computed: {
-            user() {
-                return this.$page.props.user;
-            }
-        },
+        components: {
+            AppLayout,
+            TaskList
+        }
     }
 </script>

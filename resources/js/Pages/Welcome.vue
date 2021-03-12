@@ -1,6 +1,6 @@
 <template>
     <div>
-        lol
+        <inertia-link href="/login" class="bg-gray-200 py-2 px-4 rounded">Login</inertia-link>
     </div>
 </template>
 
