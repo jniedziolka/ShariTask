@@ -42,12 +42,16 @@
             }
         },
         methods: {
-            submit() {
-                this.$inertia.post('/task', this.form, {
-                    onSuccess: () => {
-                       this.$emit('close');
-                    }
-                })
+            async submit() {
+                try {
+                    const response = await axios.post('/task', this.form);
+                    this.$store.commit('addTaskToList', {
+                        task: response.data
+                    });
+                    this.$emit('close');
+                } catch (err) {
+                    console.log(err);
+                }
             }
         }
     }

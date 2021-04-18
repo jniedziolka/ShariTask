@@ -21,10 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6904d355-cd04-4384-a819-58bfdfdbe144" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_12_212827_create_task_statuses_dictionary.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_12_212827_create_task_statuses_dictionary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_12_213004_create_task_visibility_dictionary.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_12_213004_create_task_visibility_dictionary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Components/Tasks/NewTaskModal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Components/Tasks/NewTaskModal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Store/Modules/task.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Store/Modules/task.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +228,7 @@
       <workItem from="1618568219517" duration="267000" />
       <workItem from="1618568567576" duration="2855000" />
       <workItem from="1618671515486" duration="15319000" />
-      <workItem from="1618776724335" duration="1733000" />
+      <workItem from="1618776724335" duration="5968000" />
     </task>
     <servers />
   </component>

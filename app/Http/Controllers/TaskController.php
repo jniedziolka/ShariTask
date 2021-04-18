@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +21,7 @@ class TaskController extends Controller
 
         $task->save();
 
-        return redirect('/dashboard');
+        return response()->json(json_encode($task));
     }
 
     public function getJsonTasks(Request $request) {
