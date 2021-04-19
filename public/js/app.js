@@ -2405,8 +2405,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var ziggy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ziggy */ "./vendor/tightenco/ziggy/dist/index.js");
-/* harmony import */ var ziggy__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ziggy__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var ziggy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ziggy */ "./vendor/tightenco/ziggy/dist/index.js");
+/* harmony import */ var ziggy__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(ziggy__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -2429,7 +2437,44 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['title', 'due_date', 'status', 'visibility', 'id'],
-  mounted: function mounted() {}
+  methods: {
+    handleTaskDelete: function handleTaskDelete() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios["delete"](ziggy__WEBPACK_IMPORTED_MODULE_1___default()('task.destroy', _this.id));
+
+              case 3:
+                response = _context.sent;
+
+                _this.$store.commit('removeTaskFromTheList', {
+                  id: _this.id
+                });
+
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    }
+  }
 });
 
 /***/ }),
@@ -2658,6 +2703,12 @@ var taskModule = {
     },
     addTaskToList: function addTaskToList(state, payload) {
       state.tasks = [].concat(_toConsumableArray(state.tasks), [JSON.parse(payload.task)]);
+    },
+    removeTaskFromTheList: function removeTaskFromTheList(state, payload) {
+      var index = state.tasks.findIndex(function (task) {
+        return task.id === payload.id;
+      });
+      state.tasks.splice(index, 1);
     }
   },
   actions: {
@@ -2671,7 +2722,7 @@ var taskModule = {
                 commit = _ref.commit;
                 _context.prev = 1;
                 _context.next = 4;
-                return axios.get('/api/jsonTasks');
+                return axios.get(route('task.getJsonTasks'));
 
               case 4:
                 response = _context.sent;
@@ -2694,8 +2745,7 @@ var taskModule = {
         }, _callee, null, [[1, 8]]);
       }))();
     }
-  },
-  getters: {}
+  }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (taskModule);
 
@@ -24436,15 +24486,11 @@ var render = function() {
             ),
             _vm._v(" "),
             _c(
-              "inertia-link",
+              "button",
               {
                 staticClass: "text-gray-800",
-                attrs: {
-                  href: _vm.route("task.destroy", _vm.id),
-                  method: "delete",
-                  type: "button",
-                  as: "button"
-                }
+                attrs: { type: "button" },
+                on: { click: _vm.handleTaskDelete }
               },
               [_vm._v("Delete")]
             )

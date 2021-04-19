@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->get('/jsonTasks', [TaskController::class, 'getJsonTasks']);
+Route::middleware('auth:sanctum')->get('/jsonTasks', [TaskController::class, 'getJsonTasks'])->name('task.getJsonTasks');

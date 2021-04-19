@@ -27,6 +27,7 @@ class TaskController extends Controller
     public function destroy(Request $request) {
         $task = Task::find($request->id);
         $task->delete();
+        return response('ok');
     }
 
     public function getJsonTasks(Request $request) {

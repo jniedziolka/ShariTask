@@ -24,6 +24,6 @@
             tasks() {
                 return this.$store.state.task.tasks;
             }
-        }
+        },
     }
 </script>
