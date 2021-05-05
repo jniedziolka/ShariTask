@@ -14,7 +14,7 @@ class CreateTaskStatusesDictionary extends Migration
     public function up()
     {
         Schema::create('dic_task_statuses', function (Blueprint $table) {
-            $table->unsignedInteger('id')->unique();
+            $table->unsignedBigInteger('id')->unique();
             $table->string('status');
         });
     }

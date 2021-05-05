@@ -2480,6 +2480,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, null, [[0, 7]]);
       }))();
     }
+  },
+  computed: {
+    statusText: function statusText() {},
+    statusStyle: function statusStyle() {}
   }
 });
 
@@ -2497,6 +2501,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Components_Tasks_Task__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Components/Tasks/Task */ "./resources/js/Components/Tasks/Task.vue");
+//
 //
 //
 //
@@ -24534,7 +24539,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("span", { staticClass: "text-md block text-gray-400" }, [
-      _vm._v("Uncompleted")
+      _vm._v(_vm._s(_vm.status))
     ]),
     _vm._v(" "),
     _c("span", { staticClass: "text-sm block mb-4 text-gray-400" }, [
@@ -24617,7 +24622,12 @@ var render = function() {
     _vm._l(_vm.tasks, function(task, index) {
       return _c("task", {
         key: task.id,
-        attrs: { title: task.title, due_date: task.due_date, id: task.id }
+        attrs: {
+          title: task.title,
+          due_date: task.due_date,
+          status: task.status,
+          id: task.id
+        }
       })
     }),
     1

@@ -36,7 +36,7 @@
                     title: null,
                     description: null,
                     visibility: null,
-                    date: null
+                    date: null,
                 }
             }
         },

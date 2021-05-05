@@ -4,7 +4,7 @@
             <h2 class="text-3xl text-gray-800 mb-1">{{ title }}</h2>
             <span class="text-gray-400">{{ due_date }}</span>
         </div>
-        <span class="text-md block text-gray-400">Uncompleted</span>
+        <span class="text-md block text-gray-400">{{ status }}</span>
         <span class="text-sm block mb-4 text-gray-400">Private</span>
         <span class="text-xl text-gray-500">No description</span>
         <div class="flex justify-between mt-20">
@@ -30,6 +30,14 @@
                 } catch (err) {
                     console.log(err);
                 }
+            }
+        },
+        computed: {
+            statusText() {
+
+            },
+            statusStyle() {
+
             }
         }
     }

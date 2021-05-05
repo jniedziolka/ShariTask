@@ -10,20 +10,18 @@ class Task extends Model
 {
     use HasFactory;
 
-//    public function getStatusAttribute() {
-//        // todo - cache statuses list
-//        return DB::table('dic_task_statuses')
-//                ->select('status')
-//                ->where('id', '=', $this->status);
-//    }
-//
-//    public function getVisibilityAttribute() {
-//        // todo - cache visibilities list
-//        return DB::table('dic_task_visibilities')
-//                ->select('visibility')
-//                ->where('id', '=', $this->visibility);
-//    }
-//
+    public function getStatusAttribute($value) {
+        return DB::table('dic_task_statuses')
+                ->select('status')
+                ->where('id', '=', $value)->value('status');
+    }
+
+    public function getVisibilityAttribute($value) {
+        return DB::table('dic_task_visibilities')
+                ->select('visibility')
+                ->where('id', '=', $value)->value('visibility');
+    }
+
     public function getDueDateAttribute($value) {
         return date('M j, Y', strtotime($value));
     }

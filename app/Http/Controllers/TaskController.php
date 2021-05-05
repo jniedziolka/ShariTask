@@ -16,7 +16,7 @@ class TaskController extends Controller
         $task->title = $request->title;
         $task->description = $request->description;
         $task->visibility = $request->visibility;
-        $task->status = 0;
+        $task->status = 1;
         $task->due_date = $request->date;
         $task->user_id = Auth::user()->id;
 

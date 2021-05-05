@@ -16,15 +16,15 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->unsignedInteger('status');
-            $table->string('visibility');
             $table->string('description');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('status')->constrained('dic_task_statuses');
+            $table->foreignId('visibility')->constrained('dic_task_visibilities');
             $table->date('due_date');
             $table->timestamps();
         });
 
         Schema::table('tasks', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 
