@@ -4,11 +4,17 @@
             <h2 class="text-3xl text-gray-800 mb-1">{{ title }}</h2>
             <span class="text-gray-400">{{ due_date }}</span>
         </div>
-        <span class="text-md block text-gray-400">{{ status }}</span>
         <span class="text-sm block mb-4 text-gray-400">Private</span>
         <span class="text-xl text-gray-500">No description</span>
         <div class="flex justify-between mt-20">
-            <inertia-link href="/" type="button" as="button" class="bg-gray-400 py-2 px-4 rounded">Complete</inertia-link>
+            <inertia-link @mouseover="hover = true"
+                          @mouseleave="hover = false"
+                          href="/"
+                          type="button"
+                          as="button"
+                          class="py-2 px-4 rounded text-white" :class="statusStyle">
+                {{ statusText }}
+            </inertia-link>
             <div class="flex">
                 <inertia-link href="/" type="button" as="button" class="bg-gray-300 py-2 px-4 rounded mr-4">Edit</inertia-link>
                 <button @click="handleTaskDelete" type="button" class="text-gray-800">Delete</button>
@@ -22,6 +28,11 @@
 
     export default {
         props: ['title', 'due_date', 'status', 'visibility', 'id'],
+        data() {
+            return {
+                hover: false
+            }
+        },
         methods: {
             async handleTaskDelete() {
                 try {
@@ -34,10 +45,24 @@
         },
         computed: {
             statusText() {
-
+                switch(this.status) {
+                    case 'Uncompleted':
+                        return this.hover ? 'Complete' : 'Uncompleted';
+                    case 'Completed':
+                        return this.hover ? 'Uncomplete' : 'Completed';
+                    default:
+                        return 'Unknown';
+                }
             },
             statusStyle() {
-
+                switch(this.status) {
+                    case 'Uncompleted':
+                        return this.hover ? 'bg-green-400' : 'bg-red-400';
+                    case 'Completed':
+                        return this.hover ? 'bg-red-400' : 'bg-green-400';
+                    default:
+                        return 'bg-gray-400';
+                }
             }
         }
     }

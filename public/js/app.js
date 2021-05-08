@@ -2440,9 +2440,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['title', 'due_date', 'status', 'visibility', 'id'],
+  data: function data() {
+    return {
+      hover: false
+    };
+  },
   methods: {
     handleTaskDelete: function handleTaskDelete() {
       var _this = this;
@@ -2482,8 +2493,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   computed: {
-    statusText: function statusText() {},
-    statusStyle: function statusStyle() {}
+    statusText: function statusText() {
+      switch (this.status) {
+        case 'Uncompleted':
+          return this.hover ? 'Complete' : 'Uncompleted';
+
+        case 'Completed':
+          return this.hover ? 'Uncomplete' : 'Completed';
+
+        default:
+          return 'Unknown';
+      }
+    },
+    statusStyle: function statusStyle() {
+      switch (this.status) {
+        case 'Uncompleted':
+          return this.hover ? 'bg-green-400' : 'bg-red-400';
+
+        case 'Completed':
+          return this.hover ? 'bg-red-400' : 'bg-green-400';
+
+        default:
+          return 'bg-gray-400';
+      }
+    }
   }
 });
 
@@ -24538,10 +24571,6 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("span", { staticClass: "text-md block text-gray-400" }, [
-      _vm._v(_vm._s(_vm.status))
-    ]),
-    _vm._v(" "),
     _c("span", { staticClass: "text-sm block mb-4 text-gray-400" }, [
       _vm._v("Private")
     ]),
@@ -24557,10 +24586,19 @@ var render = function() {
         _c(
           "inertia-link",
           {
-            staticClass: "bg-gray-400 py-2 px-4 rounded",
-            attrs: { href: "/", type: "button", as: "button" }
+            staticClass: "py-2 px-4 rounded text-white",
+            class: _vm.statusStyle,
+            attrs: { href: "/", type: "button", as: "button" },
+            on: {
+              mouseover: function($event) {
+                _vm.hover = true
+              },
+              mouseleave: function($event) {
+                _vm.hover = false
+              }
+            }
           },
-          [_vm._v("Complete")]
+          [_vm._v("\n            " + _vm._s(_vm.statusText) + "\n        ")]
         ),
         _vm._v(" "),
         _c(
